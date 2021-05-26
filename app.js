@@ -13,18 +13,18 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/newdataba
  mongoose.connection.on("error", (error) => console.log(error));
  mongoose.connection.once("open", () => console.log("Mongoose conectado"));
 
- const visistSchema = mongoose.Schema({    
+ const visitSchema = mongoose.Schema({    
      date: Date,
      name: String,        
  });
 
-const visitModel = mongoose.model("Visit", visistSchema);
+const Visitor = mongoose.model("Visit", visitSchema);
 
 app.use(time.init);
 
 app.get('/', (req, res) => {
 
-     const visit = new visitModel({
+     const visit = new Visitor({
         date: req.timestamp,
         name: req.query.name,                   
     });
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
         console.log("Visit created");     
     });
 
-    res.send(`<h1>Hola ${req.query.name}!</h1>`);
+    res.send(`<h1>"El visitante fue almacenado con éxito"</h1>`);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
