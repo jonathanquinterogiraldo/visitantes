@@ -24,7 +24,7 @@ app.use(time.init);
 
 app.get('/', (req, res) => {
 
-    const name = 'Anónimo';
+    let name = 'Anónimo';
 
     if (req.query.name) {
         name = req.query.name;
@@ -40,10 +40,11 @@ app.get('/', (req, res) => {
             console.log(error);
             return;
         }
-        console.log("Visit created");     
+        console.log("Visit created"); 
+        res.send(`<h1>"El visitante fue almacenado con éxito"</h1>`);    
     });
 
-    res.send(`<h1>"El visitante fue almacenado con éxito"</h1>`);
+    
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
