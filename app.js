@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/newdataba
      name: String,        
  });
 
-const Visitor = mongoose.model("Visit", visitSchema);
+const Visitor = mongoose.model("Visitor", visitSchema);
 
 app.use(time.init);
 
