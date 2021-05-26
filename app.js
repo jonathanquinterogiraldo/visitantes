@@ -24,9 +24,15 @@ app.use(time.init);
 
 app.get('/', (req, res) => {
 
+    const name = 'Anónimo';
+
+    if (req.query.name) {
+        name = req.query.name;
+    }    
+
      const visit = new Visitor({
         date: req.timestamp,
-        name: req.query.name,                   
+        name: name,                   
     });
     
     visit.save((error) => {
